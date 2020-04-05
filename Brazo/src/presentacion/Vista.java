@@ -3,6 +3,7 @@ package presentacion;
 
 import java.awt.Canvas;
 import javax.swing.*;
+import javax.swing.event.ChangeListener;
 
 
 public class Vista extends javax.swing.JFrame {
@@ -24,8 +25,9 @@ public class Vista extends javax.swing.JFrame {
     }
 
     private void asignarEventos() {
-        btnArt1sus.addActionListener(getControl());
-        btnArt1add.addActionListener(getControl());
+        
+        jArt1.addChangeListener((ChangeListener) getControl());
+        jPinza.addChangeListener((ChangeListener) getControl());
     }
  
     @SuppressWarnings("unchecked")
@@ -33,100 +35,78 @@ public class Vista extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnArt1sus = new javax.swing.JButton();
         lienzo = new java.awt.Canvas();
-        btnArt1add = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnArt2sus = new javax.swing.JButton();
-        btnArt2add = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jPinza = new javax.swing.JSlider();
+        jArt1 = new javax.swing.JSlider();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
-
-        btnArt1sus.setBackground(new java.awt.Color(204, 204, 255));
-        btnArt1sus.setText("<");
-        btnArt1sus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArt1susActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnArt1sus);
-        btnArt1sus.setBounds(120, 20, 50, 40);
         getContentPane().add(lienzo);
-        lienzo.setBounds(240, 20, 470, 300);
+        lienzo.setBounds(300, 10, 450, 430);
 
-        btnArt1add.setBackground(new java.awt.Color(204, 204, 255));
-        btnArt1add.setText(">");
-        btnArt1add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArt1addActionPerformed(evt);
+        jPinza.setMajorTickSpacing(10);
+        jPinza.setMinimum(-10);
+        jPinza.setPaintLabels(true);
+        jPinza.setPaintTicks(true);
+        jPinza.setValue(5);
+        jPinza.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jPinzaStateChanged(evt);
             }
         });
-        getContentPane().add(btnArt1add);
-        btnArt1add.setBounds(170, 20, 50, 40);
+        getContentPane().add(jPinza);
+        jPinza.setBounds(30, 140, 240, 50);
 
-        jLabel1.setText("base");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 60, 30);
-
-        btnArt2sus.setBackground(new java.awt.Color(204, 204, 255));
-        btnArt2sus.setText("<");
-        btnArt2sus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArt2susActionPerformed(evt);
+        jArt1.setMajorTickSpacing(50);
+        jArt1.setMaximum(180);
+        jArt1.setMinimum(-180);
+        jArt1.setMinorTickSpacing(5);
+        jArt1.setPaintLabels(true);
+        jArt1.setPaintTicks(true);
+        jArt1.setToolTipText("");
+        jArt1.setValue(0);
+        jArt1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jArt1StateChanged(evt);
             }
         });
-        getContentPane().add(btnArt2sus);
-        btnArt2sus.setBounds(120, 70, 50, 40);
+        getContentPane().add(jArt1);
+        jArt1.setBounds(30, 50, 240, 50);
 
-        btnArt2add.setBackground(new java.awt.Color(204, 204, 255));
-        btnArt2add.setText(">");
-        btnArt2add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnArt2addActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnArt2add);
-        btnArt2add.setBounds(170, 70, 50, 40);
+        jLabel2.setText("Articulación 1");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(40, 30, 80, 14);
 
-        jLabel3.setText("Eje 1");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 70, 60, 30);
+        jLabel4.setText("Pinzas");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(40, 120, 120, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnArt1susActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArt1susActionPerformed
+    private void jPinzaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jPinzaStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnArt1susActionPerformed
+    }//GEN-LAST:event_jPinzaStateChanged
 
-    private void btnArt1addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArt1addActionPerformed
+    private void jArt1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jArt1StateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnArt1addActionPerformed
+    }//GEN-LAST:event_jArt1StateChanged
 
-    private void btnArt2susActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArt2susActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnArt2susActionPerformed
-
-    private void btnArt2addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnArt2addActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnArt2addActionPerformed
-
-   public JButton getbtnArt1add() {
-       
-        return btnArt1add;
-    }
-      public JButton getbtnArt1sus() {
-       
-        return btnArt1sus;
-    }
+  
     public Modelo getModelo() {
         return modelo;
     }
 
-  
-
+    public JSlider getSliderArt() {
+       
+        return jArt1;
+    }
+    public JSlider getSliderPinza() {
+       
+        return jPinza;
+    }
    
     public Canvas getLienzo() {
         return lienzo;
@@ -134,13 +114,11 @@ public class Vista extends javax.swing.JFrame {
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnArt1add;
-    private javax.swing.JButton btnArt1sus;
-    private javax.swing.JButton btnArt2add;
-    private javax.swing.JButton btnArt2sus;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSlider jArt1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JSlider jPinza;
     private java.awt.Canvas lienzo;
     // End of variables declaration//GEN-END:variables
 
