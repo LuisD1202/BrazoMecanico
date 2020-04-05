@@ -54,7 +54,7 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(btnArt1sus);
         btnArt1sus.setBounds(120, 20, 50, 40);
         getContentPane().add(lienzo);
-        lienzo.setBounds(440, 20, 290, 290);
+        lienzo.setBounds(240, 20, 470, 300);
 
         btnArt1add.setBackground(new java.awt.Color(204, 204, 255));
         btnArt1add.setText(">");

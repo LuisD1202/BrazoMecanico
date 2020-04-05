@@ -4,6 +4,7 @@ import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import logica.ControlMovimiento;
@@ -45,10 +46,10 @@ public class Modelo {
     public void iniciar(){
         getVentanaInicial().setSize(800, 400);
         getVentanaInicial().setVisible(true);
-        hiloDibujo.start();
+        //hiloDibujo.start();
     }
     
-    public void controlar(Object e){ // Representa un requerimiento funcional
+    public void controlar(Object e) throws IOException{ // Representa un requerimiento funcional
       int g=0;
          if(e ==this.ventanaInicial.getbtnArt1add()){
           
@@ -65,7 +66,7 @@ public class Modelo {
        
     }
 
-    private void dibujar(int g) {
+    private void dibujar(int g) throws IOException {
         Canvas lienzo = getVentanaInicial().getLienzo();
         Graphics2D lapiz = (Graphics2D) lienzo.getGraphics();
        lienzo.paint(lapiz);
