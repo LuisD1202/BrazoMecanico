@@ -34,7 +34,7 @@ public class Modelo implements Runnable{
     
    public Modelo() {
         activo = true;
-      hiloDibujo = new Thread(this);
+        hiloDibujo = new Thread(this);
     }
     public Vista getVentanaInicial() {
         if(ventanaInicial == null){
@@ -53,7 +53,7 @@ public class Modelo implements Runnable{
     
     
     public void iniciar(){
-        getVentanaInicial().setSize(800, 400);
+        getVentanaInicial().setSize(820,720);
         getVentanaInicial().setVisible(true);
         hiloDibujo.start();
     }
@@ -62,50 +62,52 @@ public class Modelo implements Runnable{
      
        // control de eventos de los slider
        if(e == this.ventanaInicial.getSliderArt()){
-       
            gA1=this.getVentanaInicial().getSliderArt().getValue();
-           
-            dibujar();
-       }else if(e == this.ventanaInicial.getSliderPinza()){
-       
-           gP=this.getVentanaInicial().getSliderPinza().getValue();
-           
+           dibujar();
+       }else if(e == this.ventanaInicial.getSliderArt2()){
+            gA2=this.getVentanaInicial().getSliderArt2().getValue();
+           dibujar();
+       }
+       else if(e == this.ventanaInicial.getSliderArt3()){
+            gA3=this.getVentanaInicial().getSliderArt3().getValue();
+           dibujar();
+       }
+       else if(e == this.ventanaInicial.getSliderArt4()){
+            gA4=this.getVentanaInicial().getSliderArt4().getValue();
+           dibujar();
+       }
+       else if(e == this.ventanaInicial.getSliderPinza()){
+            gP=this.getVentanaInicial().getSliderPinza().getValue();
             dibujar();
        }
     }
 
     private void dibujar() throws IOException {
-
-      
-     
+        
         Canvas papel = getVentanaInicial().getLienzo();
         Graphics lienzo = papel.getGraphics();
-
-         BufferedImage dobleBuffer = new BufferedImage(papel.getWidth(), papel.getHeight(), BufferedImage.TYPE_INT_RGB);
-         
+        BufferedImage dobleBuffer = new BufferedImage(papel.getWidth(), papel.getHeight(), BufferedImage.TYPE_INT_RGB); 
         Graphics lapiz = dobleBuffer.getGraphics();
         lapiz.clearRect(0, 0, papel.getWidth(), papel.getHeight());
-      
-          
         
-           Image Base = ImageIO.read(this.getClass().getResource("../src/Base.png"));
-           Image Art = ImageIO.read(this.getClass().getResource("../src/art1.png"));
-           Image Art4 = ImageIO.read(this.getClass().getResource("../src/art5.png"));
-           Image pinza1 = ImageIO.read(this.getClass().getResource("../src/pinza1.png"));
-           Image pinza2 = ImageIO.read(this.getClass().getResource("../src/pinza2.png"));
+        Image Base = ImageIO.read(this.getClass().getResource("../src/Base.png"));
+        Image Art = ImageIO.read(this.getClass().getResource("../src/art1.png"));
+        Image Art4 = ImageIO.read(this.getClass().getResource("../src/art5.png"));
+        Image pinza1 = ImageIO.read(this.getClass().getResource("../src/pinza1.png"));
+        Image pinza2 = ImageIO.read(this.getClass().getResource("../src/pinza2.png"));
            
      
      //Base
         AffineTransform at0= new AffineTransform();
-        at0.setToTranslation(80, 20); //desplazar el brazo
+        at0.setToTranslation(250,100); //desplazar el brazo
         ((Graphics2D) lapiz).setTransform(at0);
         lapiz.drawImage(Base, w, h, Base.getWidth(null), Base.getHeight(null), null);
      //Articuación 1              
         AffineTransform at1= new AffineTransform();
-           at1.preConcatenate(at0); 
-         at1.rotate(Math.toRadians(gA1),w+45,h+30); 
+        at1.preConcatenate(at0); 
+        at1.rotate(Math.toRadians(gA1),w+45,h+30); 
         ((Graphics2D) lapiz).setTransform(at1);
-          lapiz.drawImage(Art, w+20,h-100, 50, 150, null);
+        lapiz.drawImage(Art, w+20,h-100, 50, 150, null);
      //Articuación 2   
          AffineTransform at2 = new AffineTransform();
          at2.preConcatenate(at1); 
@@ -124,7 +126,6 @@ public class Modelo implements Runnable{
          at4.preConcatenate(at3); 
          at4.rotate(Math.toRadians(-gA4),w+45,h+65);
         ((Graphics2D) lapiz).setTransform(at4);
-        
         lapiz.drawImage(Art4, w+32,h+60, 30, 40, null);  
             
       //Pinzas   
@@ -133,16 +134,13 @@ public class Modelo implements Runnable{
          at5.rotate(Math.toRadians(gP),w+39,h+95);
         ((Graphics2D) lapiz).setTransform(at5);
          lapiz.drawImage(pinza1, w+24,h+89, 20, 50, null);
-         
-         
-       AffineTransform at6 = new AffineTransform();
-         at6.preConcatenate(at4); 
-         at6.rotate(Math.toRadians(-gP),w+52,h+96);
+          
+        AffineTransform at6 = new AffineTransform();
+        at6.preConcatenate(at4); 
+        at6.rotate(Math.toRadians(-gP),w+52,h+96);
         ((Graphics2D) lapiz).setTransform(at6);
-        
-      lapiz.drawImage(pinza2, w+49,h+89, 20, 50, null);
-      
-      
+        lapiz.drawImage(pinza2, w+49,h+89, 20, 50, null);
+
         lienzo.drawImage(dobleBuffer, 0, 0, papel);       
     }
 
