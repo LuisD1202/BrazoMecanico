@@ -12,8 +12,8 @@ public class Brazo {
     public  int w, h,gA1,gA2,gA3,gA4,gp; 
     public Brazo() {
         //asignar los valores iniciales de las articulaciones 
-        w = 30;
-        h = 200;
+        w = 280;
+        h = 300;
         gA1 =0;
         gA2 =45;
         gA3 =0;

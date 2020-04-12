@@ -50,6 +50,16 @@ public class Vista extends javax.swing.JFrame {
         jArt4 = new javax.swing.JSlider();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        lArticulacion1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        lArticulacion2 = new javax.swing.JLabel();
+        lArticulacion3 = new javax.swing.JLabel();
+        lArtPinza = new javax.swing.JLabel();
+        lPinza = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -165,6 +175,54 @@ public class Vista extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(270, 10, 210, 40);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setText("Articulación 1: ");
+        jLabel7.setMaximumSize(new java.awt.Dimension(93, 17));
+        jLabel7.setMinimumSize(new java.awt.Dimension(93, 17));
+        jLabel7.setPreferredSize(new java.awt.Dimension(93, 17));
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(840, 230, 110, 20);
+
+        lArticulacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(lArticulacion1);
+        lArticulacion1.setBounds(1080, 230, 140, 20);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Articulación 2: ");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(840, 290, 110, 17);
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setText("Articulación 3: ");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(840, 340, 110, 20);
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Articulación de la pinza: ");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(840, 390, 190, 20);
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Pinza: ");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(840, 440, 90, 17);
+
+        lArticulacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(lArticulacion2);
+        lArticulacion2.setBounds(1080, 290, 130, 20);
+
+        lArticulacion3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(lArticulacion3);
+        lArticulacion3.setBounds(1080, 340, 130, 20);
+
+        lArtPinza.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(lArtPinza);
+        lArtPinza.setBounds(1080, 390, 90, 20);
+
+        lPinza.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        getContentPane().add(lPinza);
+        lPinza.setBounds(1080, 440, 90, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -213,6 +271,25 @@ public class Vista extends javax.swing.JFrame {
         return lienzo;
     }
 
+    public JLabel getLArt1(){
+        return lArticulacion1;
+    }
+    
+    public JLabel getLArt2(){
+        return lArticulacion2;
+    }
+    
+    public JLabel getLArt3(){
+        return lArticulacion3;
+    }
+    
+    public JLabel getLArtPinza(){
+        return lArtPinza;
+    }
+    
+    public JLabel getLPinza(){
+        return lPinza;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -221,12 +298,22 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JSlider jArt3;
     private javax.swing.JSlider jArt4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSlider jPinza;
+    private javax.swing.JLabel lArtPinza;
+    private javax.swing.JLabel lArticulacion1;
+    private javax.swing.JLabel lArticulacion2;
+    private javax.swing.JLabel lArticulacion3;
+    private javax.swing.JLabel lPinza;
     private java.awt.Canvas lienzo;
     // End of variables declaration//GEN-END:variables
 
