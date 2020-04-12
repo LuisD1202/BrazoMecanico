@@ -115,39 +115,44 @@ public class Modelo implements Runnable{
         at1.preConcatenate(at0); 
         at1.rotate(Math.toRadians(gA1),w+45,h+30);
         ((Graphics2D) lapiz).setTransform(at1);
-        lapiz.drawImage(Art, w+20,h-100, 50, 150, null);
+        lapiz.drawImage(Art, w+20,h-95, 50, 150, null);
        
         int cxart1 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA1)) - (205-330)*Math.sin(Math.toRadians(gA1)));
         int cyart1 = (int) (330 + (325-325)*Math.sin(Math.toRadians(gA1)) + (205-330)*Math.cos(Math.toRadians(gA1)));
         //point.setLocation(cxart1, cyart1);
 
-        
-
      //Articuación 2   
          AffineTransform at2 = new AffineTransform();
          at2.preConcatenate(at1); 
-         at2.rotate(Math.toRadians(-gA2),w+45,h-80);
+         at2.rotate(Math.toRadians(-gA2),w+44,h-74);
         ((Graphics2D) lapiz).setTransform(at2);
-         lapiz.drawImage(Art, w+25,h-95, 40, 100, null);  
+         lapiz.drawImage(Art, w+26,h-90, 40, 100, null);  
          
-        int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA2)) - (295-205)*Math.sin(Math.toRadians(gA2)));
-        int cyart2 = (int) (205 + (325-325)*Math.sin(Math.toRadians(gA2)) + (295-205)*Math.cos(Math.toRadians(gA2)));
+        int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(-gA2)) - (205-330)*Math.sin(Math.toRadians(-gA2)));
+        int cyart2 = (int) (330 + (325-325)*Math.sin(Math.toRadians(-gA2)) + (205-330)*Math.cos(Math.toRadians(-gA2)));
+        
+        //int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA2)) - (295-205)*Math.sin(Math.toRadians(gA2)));
+        //int cyart2 = (int) (205 + (325-325)*Math.sin(Math.toRadians(gA2)) + (295-205)*Math.cos(Math.toRadians(gA2)));
       //Articuación 3      
         AffineTransform at3 = new AffineTransform();
-         at3.preConcatenate(at2);
-         at3.rotate(Math.toRadians(-gA3),w+45,h-5);
+        at3.preConcatenate(at2);
+        at3.rotate(Math.toRadians(-gA3),w+47,h-3);
         ((Graphics2D) lapiz).setTransform(at3);   
-        lapiz.drawImage(Art, w+25,h-20, 40, 100, null);
-        int cxart3 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA3)) - (365-295)*Math.sin(Math.toRadians(gA3)));
-        int cyart3 = (int) (295 + (325-325)*Math.sin(Math.toRadians(gA3)) + (365-295)*Math.cos(Math.toRadians(gA3)));
-        lapiz.setColor(Color.red);
+        lapiz.drawImage(Art, w+28,h-15, 40, 100, null);
+        
+        int cxart3 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA3)) - (295-205)*Math.sin(Math.toRadians(gA3)));
+        int cyart3 = (int) (205 + (325-325)*Math.sin(Math.toRadians(gA3)) + (295-205)*Math.cos(Math.toRadians(gA3)));
+        
+       // int cxart3 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA3)) - (365-295)*Math.sin(Math.toRadians(gA3)));
+        //int cyart3 = (int) (295 + (325-325)*Math.sin(Math.toRadians(gA3)) + (365-295)*Math.cos(Math.toRadians(gA3)));
+        lapiz.setColor(Color.PINK);
         lapiz.drawOval(325, 365, 10, 10);
        //Articuación 4    
          AffineTransform at4 = new AffineTransform();
          at4.preConcatenate(at3); 
-         at4.rotate(Math.toRadians(-gA4),w+45,h+65);
+         at4.rotate(Math.toRadians(-gA4),w+48,h+69);
         ((Graphics2D) lapiz).setTransform(at4);
-        lapiz.drawImage(Art4, w+32,h+60, 30, 40, null);  
+        lapiz.drawImage(Art4, w+34,h+60, 30, 40, null);  
                 
       //Pinzas   
          AffineTransform at5 = new AffineTransform();
