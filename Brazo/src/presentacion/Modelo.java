@@ -127,12 +127,8 @@ public class Modelo implements Runnable{
          at2.rotate(Math.toRadians(-gA2),w+44,h-74);
         ((Graphics2D) lapiz).setTransform(at2);
          lapiz.drawImage(Art, w+26,h-90, 40, 100, null);  
-         
-        int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(-gA2)) - (205-330)*Math.sin(Math.toRadians(-gA2)));
-        int cyart2 = (int) (330 + (325-325)*Math.sin(Math.toRadians(-gA2)) + (205-330)*Math.cos(Math.toRadians(-gA2)));
-        
-        //int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA2)) - (295-205)*Math.sin(Math.toRadians(gA2)));
-        //int cyart2 = (int) (205 + (325-325)*Math.sin(Math.toRadians(gA2)) + (295-205)*Math.cos(Math.toRadians(gA2)));
+        int cxart2 = (int) (325 + (325-325) * Math.cos(Math.toRadians(gA2)) - (295-205)*Math.sin(Math.toRadians(gA2)));
+        int cyart2 = (int) (205 + (325-325)*Math.sin(Math.toRadians(gA2)) + (295-205)*Math.cos(Math.toRadians(gA2)));
       //Articuación 3      
         AffineTransform at3 = new AffineTransform();
         at3.preConcatenate(at2);
