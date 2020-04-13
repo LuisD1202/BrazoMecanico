@@ -55,7 +55,6 @@ public class Vista extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
         lArticulacion2 = new javax.swing.JLabel();
         lArticulacion3 = new javax.swing.JLabel();
         lArtPinza = new javax.swing.JLabel();
@@ -65,7 +64,7 @@ public class Vista extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().setLayout(null);
         getContentPane().add(lienzo);
-        lienzo.setBounds(20, 250, 670, 400);
+        lienzo.setBounds(20, 250, 670, 420);
 
         jPinza.setMajorTickSpacing(10);
         jPinza.setMinimum(-10);
@@ -185,7 +184,7 @@ public class Vista extends javax.swing.JFrame {
 
         lArticulacion1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(lArticulacion1);
-        lArticulacion1.setBounds(1080, 230, 140, 20);
+        lArticulacion1.setBounds(960, 230, 160, 20);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Articulación 2: ");
@@ -198,26 +197,21 @@ public class Vista extends javax.swing.JFrame {
         jLabel10.setBounds(840, 340, 110, 20);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setText("Articulación de la pinza: ");
+        jLabel11.setText("Pinza: ");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(840, 390, 190, 20);
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel12.setText("Pinza: ");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(840, 440, 90, 17);
+        jLabel11.setBounds(840, 390, 100, 20);
 
         lArticulacion2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(lArticulacion2);
-        lArticulacion2.setBounds(1080, 290, 130, 20);
+        lArticulacion2.setBounds(960, 290, 160, 20);
 
         lArticulacion3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(lArticulacion3);
-        lArticulacion3.setBounds(1080, 340, 130, 20);
+        lArticulacion3.setBounds(960, 340, 170, 20);
 
         lArtPinza.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(lArtPinza);
-        lArtPinza.setBounds(1080, 390, 90, 20);
+        lArtPinza.setBounds(960, 390, 180, 20);
 
         lPinza.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(lPinza);
@@ -300,7 +294,6 @@ public class Vista extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

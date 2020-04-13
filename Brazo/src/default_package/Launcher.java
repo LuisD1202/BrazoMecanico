@@ -1,4 +1,4 @@
-package brazo;
+package default_package;
 import presentacion.Modelo;
 
 public class Launcher {

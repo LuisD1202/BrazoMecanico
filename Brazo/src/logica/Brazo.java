@@ -13,9 +13,9 @@ public class Brazo {
     public Brazo() {
         //asignar los valores iniciales de las articulaciones 
         w = 280;
-        h = 300;
+        h = 250;
         gA1 =0;
-        gA2 =45;
+        gA2 =0;
         gA3 =0;
         gA4 =0;
         gp =0;
