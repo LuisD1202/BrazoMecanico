@@ -71,13 +71,13 @@ public class Modelo implements Runnable{
         activo = true;
         hiloDibujo = new Thread(this);
     }
-    public Vista getVentanaInicial() {
+   
+   public Vista getVentanaInicial() {
         if(ventanaInicial == null){
             ventanaInicial = new Vista(this);
         }
         return ventanaInicial;
     }
-
 
    public Brazo getBrazo() {
         if(miBrazo == null){
@@ -85,16 +85,14 @@ public class Modelo implements Runnable{
         }
         return miBrazo;
     }
-  
-
     
-    public void iniciar(){
+   public void iniciar(){
         getVentanaInicial().setSize(1200,720);
         getVentanaInicial().setVisible(true);
         hiloDibujo.start();
     }
     
-    public void controlar(Object e) throws IOException{ 
+   public void controlar(Object e) throws IOException{ 
        
     
        // control de eventos de los slider
@@ -184,7 +182,7 @@ public class Modelo implements Runnable{
        }
     }
 
-    private void dibujar() throws IOException {
+   private void dibujar() throws IOException {
  
         Canvas papel = getVentanaInicial().getLienzo();
         
@@ -257,16 +255,7 @@ public class Modelo implements Runnable{
         
         AffineTransform at7 = new AffineTransform();
         ((Graphics2D) lapiz).setTransform(at7);
-        //lapiz.setColor(Color.red);
-        //lapiz.fillOval(mart1.getX(),mart1.getY(),10,10);
-        //lapiz.setColor(Color.blue);
-        //lapiz.fillOval(mart2.getX(),mart2.getY(),10,10);
-        //lapiz.setColor(Color.green);
-        //lapiz.fillOval(mart3.getX(),mart3.getY(),10,10);
-        //lapiz.setColor(Color.yellow);
-        //lapiz.fillOval(mart4.getX(),mart4.getY(),10,10);
         
-     
         
         lienzo.drawImage(dobleBuffer, 0, 0, papel);       
     }
