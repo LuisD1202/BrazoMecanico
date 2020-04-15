@@ -36,37 +36,36 @@ public class Modelo implements Runnable{
     int gA4=getBrazo().getgA4();
     int gP=getBrazo().getGp();
     int basex = w+40;
-        int basey = h+28;
-        int art1x = w+40;
-        int art1y = h-80;
-        int art2x = w+120;
-        int art2y = h-73;
-        int art3x = w+124;
-        int art3y = h;
-        int art4x = w+123;
-        int art4y = h+65;
-        
-      int ma1x1, ma1y1; 
-      int ma2x1, ma2y1;
-      int ma3x1, ma3y1;    
-      int ma4x1, ma4y1;    
-      int ma2x2, ma2y2; 
-      int ma3x2, ma3y2;
-      int ma4x2, ma4y2;
-      int ma3x3, ma3y3;
-      int ma4x3, ma4y3;
-      int ma4x4, ma4y4;
+    int basey = h+28;
+    int art1x = w+40;
+    int art1y = h-80;
+    int art2x = w+120;
+    int art2y = h-73;
+    int art3x = w+124;
+    int art3y = h;
+    int art4x = w+123;
+    int art4y = h+65;
+    int ma1x1, ma1y1; 
+    int ma2x1, ma2y1;
+    int ma3x1, ma3y1;    
+    int ma4x1, ma4y1;    
+    int ma2x2, ma2y2; 
+    int ma3x2, ma3y2;
+    int ma4x2, ma4y2;
+    int ma3x3, ma3y3;
+    int ma4x3, ma4y3;
+    int ma4x4, ma4y4;
       
-        JLabel arti1 = getVentanaInicial().getLArt1();
-        JLabel arti2 = getVentanaInicial().getLArt2();
-        JLabel arti3 = getVentanaInicial().getLArt3();
-        JLabel artiPinza = getVentanaInicial().getLArtPinza();
-        JLabel pinzaL = getVentanaInicial().getLPinza();
-        
-          ControlMovimiento mart1 = new ControlMovimiento();
-          ControlMovimiento mart2 = new ControlMovimiento();
-          ControlMovimiento mart3 = new ControlMovimiento();
-          ControlMovimiento mart4 = new ControlMovimiento();
+    JLabel arti1 = getVentanaInicial().getLArt1();
+    JLabel arti2 = getVentanaInicial().getLArt2();
+    JLabel arti3 = getVentanaInicial().getLArt3();
+    JLabel artiPinza = getVentanaInicial().getLArtPinza();
+    JLabel pinzaL = getVentanaInicial().getLPinza();
+
+    ControlMovimiento mart1 = new ControlMovimiento();
+    ControlMovimiento mart2 = new ControlMovimiento();
+    ControlMovimiento mart3 = new ControlMovimiento();
+    ControlMovimiento mart4 = new ControlMovimiento();
           
    public Modelo() {
         activo = true;
@@ -256,19 +255,16 @@ public class Modelo implements Runnable{
         ((Graphics2D) lapiz).setTransform(at6);
         lapiz.drawImage(pinza2, w+125,h+25, 20, 50, null);
         
-        
         AffineTransform at7 = new AffineTransform();
-
         ((Graphics2D) lapiz).setTransform(at7);
-        
-        lapiz.setColor(Color.red);
-        lapiz.fillOval(mart1.getX(),mart1.getY(),10,10);
-        lapiz.setColor(Color.blue);
-        lapiz.fillOval(mart2.getX(),mart2.getY(),10,10);
-        lapiz.setColor(Color.green);
-        lapiz.fillOval(mart3.getX(),mart3.getY(),10,10);
-        lapiz.setColor(Color.yellow);
-        lapiz.fillOval(mart4.getX(),mart4.getY(),10,10);
+        //lapiz.setColor(Color.red);
+        //lapiz.fillOval(mart1.getX(),mart1.getY(),10,10);
+        //lapiz.setColor(Color.blue);
+        //lapiz.fillOval(mart2.getX(),mart2.getY(),10,10);
+        //lapiz.setColor(Color.green);
+        //lapiz.fillOval(mart3.getX(),mart3.getY(),10,10);
+        //lapiz.setColor(Color.yellow);
+        //lapiz.fillOval(mart4.getX(),mart4.getY(),10,10);
         
      
         
