@@ -35,16 +35,16 @@ public class Modelo implements Runnable{
     int gA3=getBrazo().getgA3();
     int gA4=getBrazo().getgA4();
     int gP=getBrazo().getGp();
-    int basex = w+40;
-    int basey = h+28;
-    int art1x = w+40;
-    int art1y = h-80;
-    int art2x = w+120;
+    int basex = w+46;
+    int basey = h+33;
+    int art1x = w+43;
+    int art1y = h-72;
+    int art2x = w+112;
     int art2y = h-73;
-    int art3x = w+124;
-    int art3y = h;
-    int art4x = w+123;
-    int art4y = h+65;
+    int art3x = w+118;
+    int art3y = h-73;
+    int art4x = w+121;
+    int art4y = h;
     int ma1x1, ma1y1; 
     int ma2x1, ma2y1;
     int ma3x1, ma3y1;    
@@ -213,32 +213,30 @@ public class Modelo implements Runnable{
         AffineTransform at1= new AffineTransform();
         at1.preConcatenate(at0); 
    
-        at1.rotate(Math.toRadians(gA1),w+40,h+28);
+        at1.rotate(Math.toRadians(gA1),w+46,h+33);
         ((Graphics2D) lapiz).setTransform(at1);
         lapiz.drawImage(Art, w+20,h-95, 50, 150, null);
 
      //Articuación 2   
          AffineTransform at2 = new AffineTransform();
-        
-     
-          at2.preConcatenate(at1); 
-         at2.rotate(Math.toRadians(-gA2),w+44,h-74);
+         at2.preConcatenate(at1); 
+         at2.rotate(Math.toRadians(-gA2),w+43,h-72);
         ((Graphics2D) lapiz).setTransform(at2);
-         lapiz.drawImage(Art2, w+26,h-90, 100, 40, null);  
+         lapiz.drawImage(Art2, w+32,h-93, 100, 40, null);  
 
-         //Articuación 3      
+         //Articuación 3 
         AffineTransform at3 = new AffineTransform();
         at3.preConcatenate(at2);
-        at3.rotate(Math.toRadians(-gA3),w+120,h-73);
+        at3.rotate(Math.toRadians(-gA3),w+118,h-73);
         ((Graphics2D) lapiz).setTransform(at3);   
         lapiz.drawImage(Art, w+100,h-85, 40, 100, null);       
 
-       //Articuación 4    
+       //Articuación 4   ------------------------------------------  
          AffineTransform at4 = new AffineTransform();
          at4.preConcatenate(at3); 
-         at4.rotate(Math.toRadians(-gA4),w+124,h);
+         at4.rotate(Math.toRadians(-gA4),w+121,h);
         ((Graphics2D) lapiz).setTransform(at4);
-        lapiz.drawImage(Art4, w+110,h-5, 30, 40, null);  
+        lapiz.drawImage(Art4, w+107,h-7, 30, 40, null);  
                 
       //Pinzas   
          AffineTransform at5 = new AffineTransform();
