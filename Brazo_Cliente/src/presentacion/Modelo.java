@@ -18,7 +18,7 @@ import javax.swing.JSlider;
 
 import logica.Brazo;
 import logica.ControlMovimiento;
-import logica.Sistema;
+import logica.SistemaCliente;
 
 
 public class Modelo implements Runnable{
@@ -36,49 +36,50 @@ public class Modelo implements Runnable{
     int gA3=getBrazo().getgA3();
     int gA4=getBrazo().getgA4();
     int gP=getBrazo().getGp();
-    int basex = w+46;
-    int basey = h+33;
-    int art1x = w+43;
-    int art1y = h-72;
-    int art2x = w+112;
-    int art2y = h-73;
-    int art3x = w+118;
-    int art3y = h-73;
-    int art4x = w+121;
-    int art4y = h;
-    int ma1x1, ma1y1; 
-    int ma2x1, ma2y1;
-    int ma3x1, ma3y1;    
-    int ma4x1, ma4y1;    
-    int ma2x2, ma2y2; 
-    int ma3x2, ma3y2;
-    int ma4x2, ma4y2;
-    int ma3x3, ma3y3;
-    int ma4x3, ma4y3;
-    int ma4x4, ma4y4;
+    int basex = w+40;
+        int basey = h+28;
+        int art1x = w+40;
+        int art1y = h-80;
+        int art2x = w+120;
+        int art2y = h-73;
+        int art3x = w+124;
+        int art3y = h;
+        int art4x = w+123;
+        int art4y = h+65;
+        
+      int ma1x1, ma1y1; 
+      int ma2x1, ma2y1;
+      int ma3x1, ma3y1;    
+      int ma4x1, ma4y1;    
+      int ma2x2, ma2y2; 
+      int ma3x2, ma3y2;
+      int ma4x2, ma4y2;
+      int ma3x3, ma3y3;
+      int ma4x3, ma4y3;
+      int ma4x4, ma4y4;
       
-    JLabel arti1 = getVentanaInicial().getLArt1();
-    JLabel arti2 = getVentanaInicial().getLArt2();
-    JLabel arti3 = getVentanaInicial().getLArt3();
-    JLabel artiPinza = getVentanaInicial().getLArtPinza();
-    JLabel pinzaL = getVentanaInicial().getLPinza();
-
-    ControlMovimiento mart1 = new ControlMovimiento();
-    ControlMovimiento mart2 = new ControlMovimiento();
-    ControlMovimiento mart3 = new ControlMovimiento();
-    ControlMovimiento mart4 = new ControlMovimiento();
+        JLabel arti1 = getVentanaInicial().getLArt1();
+        JLabel arti2 = getVentanaInicial().getLArt2();
+        JLabel arti3 = getVentanaInicial().getLArt3();
+        JLabel artiPinza = getVentanaInicial().getLArtPinza();
+        JLabel pinzaL = getVentanaInicial().getLPinza();
+        
+          ControlMovimiento mart1 = new ControlMovimiento();
+          ControlMovimiento mart2 = new ControlMovimiento();
+          ControlMovimiento mart3 = new ControlMovimiento();
+          ControlMovimiento mart4 = new ControlMovimiento();
           
    public Modelo() {
         activo = true;
         hiloDibujo = new Thread(this);
     }
-   
-   public Vista getVentanaInicial() {
+    public Vista getVentanaInicial() {
         if(ventanaInicial == null){
             ventanaInicial = new Vista(this);
         }
         return ventanaInicial;
     }
+
 
    public Brazo getBrazo() {
         if(miBrazo == null){
@@ -86,48 +87,32 @@ public class Modelo implements Runnable{
         }
         return miBrazo;
     }
-<<<<<<< HEAD
   
- private Sistema miSistema;
+private SistemaCliente miSistema;
 
-    public Sistema getMiSistema() {
+    
+    public SistemaCliente getMiSistema() {
         if(miSistema == null){
-            miSistema = new Sistema();
+            miSistema = new SistemaCliente();
         }
         return miSistema;
     }
     
-    public void iniciar(){
-          
-        
-=======
-    
-   public void iniciar(){
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
+    public void iniciar() throws IOException{
         getVentanaInicial().setSize(1200,720);
         getVentanaInicial().setVisible(true);
-           hiloDibujo.start();
-        try {
             getMiSistema().conectar();
-            dibujar();
-        } catch (IOException ex) {
-            Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-          
- 
+        hiloDibujo.start();
     }
     
-<<<<<<< HEAD
-    public void controlar(String e, int g) throws IOException{ 
-=======
-   public void controlar(Object e) throws IOException{ 
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
+    public void controlar(Object e) throws IOException{ 
        
     
        // control de eventos de los slider
-       if(e.equals("GA1")){
-           gA1=g;
+       if(e == this.ventanaInicial.getSliderArt()){
+           gA1=this.getVentanaInicial().getSliderArt().getValue();
           
+          getMiSistema().enviarGrados(String.valueOf(gA1));
            
      ma1x1=((int) ((basex + (art1x-basex) * Math.cos(Math.toRadians(gA1))) - ((art1y-basey)* Math.sin(Math.toRadians(gA1)))));
      ma1y1=((int) ((basey + (art1x-basex) * Math.sin(Math.toRadians(gA1))) + ((art1y-basey)* Math.cos(Math.toRadians(gA1)))));
@@ -154,9 +139,9 @@ public class Modelo implements Runnable{
            dibujar();
            
   
-       }else if(e == ""){
+       }else if(e == this.ventanaInicial.getSliderArt2()){
                
-            gA2=0;
+            gA2=this.getVentanaInicial().getSliderArt2().getValue();
       ma2x2 = (int) ((ma1x1 + (ma2x1-ma1x1) * Math.cos(Math.toRadians(-gA2))) - ((ma2y1-ma1y1)* Math.sin(Math.toRadians(-gA2))));
       ma2y2= (int) ((ma1y1+ (ma2x1-ma1x1) * Math.sin(Math.toRadians(-gA2))) + ((ma2y1-ma1y1)* Math.cos(Math.toRadians(-gA2))));
       
@@ -177,8 +162,8 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gA3=0;
+       else if(e == this.ventanaInicial.getSliderArt3()){
+            gA3=this.getVentanaInicial().getSliderArt3().getValue();
         
       ma3x3 =((int) ((ma2x2 + (ma3x2-ma2x2) * Math.cos(Math.toRadians(-gA3))) - ((ma3y2-ma2y2)* Math.sin(Math.toRadians(-gA3)))));
       ma3y3=((int) ((ma2y2+ (ma3x2-ma2x2) * Math.sin(Math.toRadians(-gA3))) + ((ma3y2-ma2y2)* Math.cos(Math.toRadians(-gA3)))));   
@@ -194,8 +179,8 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gA4=0;
+       else if(e == this.ventanaInicial.getSliderArt4()){
+            gA4=this.getVentanaInicial().getSliderArt4().getValue();
             
       ma4x4=((int) ((ma3x3+ (ma4x3-ma3x3) * Math.cos(Math.toRadians(-gA4))) - ((ma4y3-ma3y3)* Math.sin(Math.toRadians(-gA4)))));
       ma4y4=((int) ((ma3y3+ (ma4x3-ma3x3) * Math.sin(Math.toRadians(-gA4))) + ((ma4y3-ma3y3)* Math.cos(Math.toRadians(-gA4)))));    
@@ -205,13 +190,13 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gP=0;
+       else if(e == this.ventanaInicial.getSliderPinza()){
+            gP=this.getVentanaInicial().getSliderPinza().getValue();
             dibujar();
        }
     }
 
-   private void dibujar() throws IOException {
+    private void dibujar() throws IOException {
  
         Canvas papel = getVentanaInicial().getLienzo();
         
@@ -242,30 +227,32 @@ public class Modelo implements Runnable{
         AffineTransform at1= new AffineTransform();
         at1.preConcatenate(at0); 
    
-        at1.rotate(Math.toRadians(gA1),w+46,h+33);
+        at1.rotate(Math.toRadians(gA1),w+40,h+28);
         ((Graphics2D) lapiz).setTransform(at1);
         lapiz.drawImage(Art, w+20,h-95, 50, 150, null);
 
      //Articuación 2   
          AffineTransform at2 = new AffineTransform();
-         at2.preConcatenate(at1); 
-         at2.rotate(Math.toRadians(-gA2),w+43,h-72);
+        
+     
+          at2.preConcatenate(at1); 
+         at2.rotate(Math.toRadians(-gA2),w+44,h-74);
         ((Graphics2D) lapiz).setTransform(at2);
-         lapiz.drawImage(Art2, w+32,h-93, 100, 40, null);  
+         lapiz.drawImage(Art2, w+26,h-90, 100, 40, null);  
 
-         //Articuación 3 
+         //Articuación 3      
         AffineTransform at3 = new AffineTransform();
         at3.preConcatenate(at2);
-        at3.rotate(Math.toRadians(-gA3),w+118,h-73);
+        at3.rotate(Math.toRadians(-gA3),w+120,h-73);
         ((Graphics2D) lapiz).setTransform(at3);   
         lapiz.drawImage(Art, w+100,h-85, 40, 100, null);       
 
-       //Articuación 4   ------------------------------------------  
+       //Articuación 4    
          AffineTransform at4 = new AffineTransform();
          at4.preConcatenate(at3); 
-         at4.rotate(Math.toRadians(-gA4),w+121,h);
+         at4.rotate(Math.toRadians(-gA4),w+124,h);
         ((Graphics2D) lapiz).setTransform(at4);
-        lapiz.drawImage(Art4, w+107,h-7, 30, 40, null);  
+        lapiz.drawImage(Art4, w+110,h-5, 30, 40, null);  
                 
       //Pinzas   
          AffineTransform at5 = new AffineTransform();
@@ -280,9 +267,21 @@ public class Modelo implements Runnable{
         ((Graphics2D) lapiz).setTransform(at6);
         lapiz.drawImage(pinza2, w+125,h+25, 20, 50, null);
         
+        
         AffineTransform at7 = new AffineTransform();
+
         ((Graphics2D) lapiz).setTransform(at7);
         
+        lapiz.setColor(Color.red);
+        lapiz.fillOval(mart1.getX(),mart1.getY(),10,10);
+        lapiz.setColor(Color.blue);
+        lapiz.fillOval(mart2.getX(),mart2.getY(),10,10);
+        lapiz.setColor(Color.green);
+        lapiz.fillOval(mart3.getX(),mart3.getY(),10,10);
+        lapiz.setColor(Color.yellow);
+        lapiz.fillOval(mart4.getX(),mart4.getY(),10,10);
+        
+     
         
         lienzo.drawImage(dobleBuffer, 0, 0, papel);       
     }
@@ -295,7 +294,7 @@ public class Modelo implements Runnable{
             } catch (InterruptedException ex) {                
             }
              try {
-                 
+            
                  dibujar();
              } catch (IOException ex) {
                  Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);

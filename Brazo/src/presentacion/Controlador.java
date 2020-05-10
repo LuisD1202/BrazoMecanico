@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Controlador implements ActionListener, ChangeListener{
+public class Controlador {
 
     private Vista ventana;
     private Modelo modelo;
@@ -18,25 +18,7 @@ public class Controlador implements ActionListener, ChangeListener{
         ventana = v;
         modelo = v.getModelo();
     }
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-     
-        try {
-            modelo.controlar(e.getSource()); // Redireccionamos el evento causado por la vista a la funcionalidad del modelo
-        } catch (IOException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
-    @Override
-    public void stateChanged(ChangeEvent e) {
-     
-        try {
-            modelo.controlar(e.getSource());
-        } catch (IOException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
     
 }

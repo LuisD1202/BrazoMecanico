@@ -21,10 +21,6 @@ public class Brazo {
         gp =0;
     }
 
-    public void setgA1(int gA1) {
-        this.gA1 = gA1;
-    }
-
     public int getgA1() {
         return gA1;
     }
