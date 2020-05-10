@@ -86,7 +86,7 @@ public class Modelo implements Runnable{
         }
         return miBrazo;
     }
-<<<<<<< HEAD
+
   
  private Sistema miSistema;
 
@@ -97,13 +97,11 @@ public class Modelo implements Runnable{
         return miSistema;
     }
     
-    public void iniciar(){
+ 
           
-        
-=======
+
     
    public void iniciar(){
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
         getVentanaInicial().setSize(1200,720);
         getVentanaInicial().setVisible(true);
            hiloDibujo.start();
@@ -117,11 +115,10 @@ public class Modelo implements Runnable{
  
     }
     
-<<<<<<< HEAD
+
     public void controlar(String e, int g) throws IOException{ 
-=======
-   public void controlar(Object e) throws IOException{ 
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
+
+
        
     
        // control de eventos de los slider
