@@ -1,16 +1,15 @@
 package default_package;
-import java.io.IOException;
 import presentacion.Modelo;
 
 public class Launcher {
     private Modelo miApp;
 
-    public Launcher() throws IOException {
+    public Launcher() {
         miApp = new Modelo();
         miApp.iniciar();
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new Launcher();
     }
 }
