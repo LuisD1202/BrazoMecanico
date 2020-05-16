@@ -28,7 +28,8 @@ public class Modelo implements Runnable{
     private Brazo miBrazo;
     private boolean activo;
     private Thread hiloDibujo;
-
+    private Modelo modelo;
+    boolean mlocal = true;
     int w=getBrazo().getW();  
     int h=getBrazo().getH();
     int gA1=getBrazo().getgA1();  
@@ -93,7 +94,7 @@ private SistemaCliente miSistema;
     
     public SistemaCliente getMiSistema() {
         if(miSistema == null){
-            miSistema = new SistemaCliente();
+            miSistema = new SistemaCliente(this);
         }
         return miSistema;
     }
@@ -101,18 +102,50 @@ private SistemaCliente miSistema;
     public void iniciar() throws IOException{
         getVentanaInicial().setSize(1200,720);
         getVentanaInicial().setVisible(true);
+         hiloDibujo.start();
             getMiSistema().conectar();
-        hiloDibujo.start();
+       
     }
+    public void ControlarSever(String art, int g){
+      mlocal = false;
+        switch (art){
+        
+            case "Art1":           
+                 getVentanaInicial().getSliderArt().setValue(g);
+               
+                 
+                 break;
+            case "Art2":
+                  
+                 getVentanaInicial().getSliderArt2().setValue(g);
+                 
+                    break;
+             case "Art3":
+                  getVentanaInicial().getSliderArt3().setValue(g);
+                    break;
+             case "Art4":
+                  getVentanaInicial().getSliderArt4().setValue(g);
+                    break;
+              case "ArtP":
+                   getVentanaInicial().getSliderPinza().setValue(g);
+                    break;
+            
+          
+        }
     
+    }
     public void controlar(Object e) throws IOException{ 
        
     
        // control de eventos de los slider
        if(e == this.ventanaInicial.getSliderArt()){
            gA1=this.getVentanaInicial().getSliderArt().getValue();
+      if(mlocal==true){
+       getMiSistema().enviarGrados("Art1,"+gA1);
+      }
+        
           
-          getMiSistema().enviarGrados(String.valueOf(gA1));
+        
            
      ma1x1=((int) ((basex + (art1x-basex) * Math.cos(Math.toRadians(gA1))) - ((art1y-basey)* Math.sin(Math.toRadians(gA1)))));
      ma1y1=((int) ((basey + (art1x-basex) * Math.sin(Math.toRadians(gA1))) + ((art1y-basey)* Math.cos(Math.toRadians(gA1)))));
@@ -142,6 +175,12 @@ private SistemaCliente miSistema;
        }else if(e == this.ventanaInicial.getSliderArt2()){
                
             gA2=this.getVentanaInicial().getSliderArt2().getValue();
+            
+         if(mlocal==true){
+           getMiSistema().enviarGrados("Art2,"+gA2);
+         }
+        
+       
       ma2x2 = (int) ((ma1x1 + (ma2x1-ma1x1) * Math.cos(Math.toRadians(-gA2))) - ((ma2y1-ma1y1)* Math.sin(Math.toRadians(-gA2))));
       ma2y2= (int) ((ma1y1+ (ma2x1-ma1x1) * Math.sin(Math.toRadians(-gA2))) + ((ma2y1-ma1y1)* Math.cos(Math.toRadians(-gA2))));
       
@@ -163,8 +202,11 @@ private SistemaCliente miSistema;
       dibujar();
        }
        else if(e == this.ventanaInicial.getSliderArt3()){
+            
             gA3=this.getVentanaInicial().getSliderArt3().getValue();
-        
+           if(mlocal==true){  
+         getMiSistema().enviarGrados("Art3,"+gA3);
+           }
       ma3x3 =((int) ((ma2x2 + (ma3x2-ma2x2) * Math.cos(Math.toRadians(-gA3))) - ((ma3y2-ma2y2)* Math.sin(Math.toRadians(-gA3)))));
       ma3y3=((int) ((ma2y2+ (ma3x2-ma2x2) * Math.sin(Math.toRadians(-gA3))) + ((ma3y2-ma2y2)* Math.cos(Math.toRadians(-gA3)))));   
       
@@ -180,8 +222,11 @@ private SistemaCliente miSistema;
       dibujar();
        }
        else if(e == this.ventanaInicial.getSliderArt4()){
+           
             gA4=this.getVentanaInicial().getSliderArt4().getValue();
-            
+             if(mlocal==true){
+             getMiSistema().enviarGrados("Art4,"+gA4);
+             }
       ma4x4=((int) ((ma3x3+ (ma4x3-ma3x3) * Math.cos(Math.toRadians(-gA4))) - ((ma4y3-ma3y3)* Math.sin(Math.toRadians(-gA4)))));
       ma4y4=((int) ((ma3y3+ (ma4x3-ma3x3) * Math.sin(Math.toRadians(-gA4))) + ((ma4y3-ma3y3)* Math.cos(Math.toRadians(-gA4)))));    
           
@@ -191,7 +236,11 @@ private SistemaCliente miSistema;
       dibujar();
        }
        else if(e == this.ventanaInicial.getSliderPinza()){
+         
             gP=this.getVentanaInicial().getSliderPinza().getValue();
+             if(mlocal==true){
+                getMiSistema().enviarGrados("ArtP,"+gP);
+             }
             dibujar();
        }
     }

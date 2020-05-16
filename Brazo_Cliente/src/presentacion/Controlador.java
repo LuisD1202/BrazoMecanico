@@ -23,7 +23,8 @@ public class Controlador implements ActionListener, ChangeListener{
     public void actionPerformed(ActionEvent e) {
      
         try {
-            modelo.controlar(e.getSource()); // Redireccionamos el evento causado por la vista a la funcionalidad del modelo
+            modelo.controlar(e.getSource()); 
+            modelo.mlocal= true;
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -34,6 +35,7 @@ public class Controlador implements ActionListener, ChangeListener{
      
         try {
             modelo.controlar(e.getSource());
+             modelo.mlocal= true;
         } catch (IOException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }

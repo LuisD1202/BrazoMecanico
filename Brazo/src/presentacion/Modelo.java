@@ -86,46 +86,40 @@ public class Modelo implements Runnable{
         }
         return miBrazo;
     }
-<<<<<<< HEAD
+
   
  private Sistema miSistema;
 
     public Sistema getMiSistema() {
         if(miSistema == null){
-            miSistema = new Sistema();
+            miSistema = new Sistema(this);
         }
         return miSistema;
     }
     
     public void iniciar(){
           
-        
-=======
-    
-   public void iniciar(){
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
-        getVentanaInicial().setSize(1200,720);
+     
+
+        getVentanaInicial().setSize(1200,480);
         getVentanaInicial().setVisible(true);
            hiloDibujo.start();
         try {
             getMiSistema().conectar();
-            dibujar();
+           
         } catch (IOException ex) {
             Logger.getLogger(Modelo.class.getName()).log(Level.SEVERE, null, ex);
         }
           
  
     }
-    
-<<<<<<< HEAD
+
     public void controlar(String e, int g) throws IOException{ 
-=======
-   public void controlar(Object e) throws IOException{ 
->>>>>>> 874279f905b4251cbd44272b3b66e4051a20e6f9
+
        
     
        // control de eventos de los slider
-       if(e.equals("GA1")){
+       if(e.equals("Art1")){
            gA1=g;
           
            
@@ -154,9 +148,9 @@ public class Modelo implements Runnable{
            dibujar();
            
   
-       }else if(e == ""){
+       }else if(e.equals("Art2")){
                
-            gA2=0;
+            gA2=g;
       ma2x2 = (int) ((ma1x1 + (ma2x1-ma1x1) * Math.cos(Math.toRadians(-gA2))) - ((ma2y1-ma1y1)* Math.sin(Math.toRadians(-gA2))));
       ma2y2= (int) ((ma1y1+ (ma2x1-ma1x1) * Math.sin(Math.toRadians(-gA2))) + ((ma2y1-ma1y1)* Math.cos(Math.toRadians(-gA2))));
       
@@ -177,8 +171,8 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gA3=0;
+       else if(e.equals("Art3")){
+            gA3=g;
         
       ma3x3 =((int) ((ma2x2 + (ma3x2-ma2x2) * Math.cos(Math.toRadians(-gA3))) - ((ma3y2-ma2y2)* Math.sin(Math.toRadians(-gA3)))));
       ma3y3=((int) ((ma2y2+ (ma3x2-ma2x2) * Math.sin(Math.toRadians(-gA3))) + ((ma3y2-ma2y2)* Math.cos(Math.toRadians(-gA3)))));   
@@ -194,8 +188,8 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gA4=0;
+       else if(e.equals("Art4")){
+            gA4=g;
             
       ma4x4=((int) ((ma3x3+ (ma4x3-ma3x3) * Math.cos(Math.toRadians(-gA4))) - ((ma4y3-ma3y3)* Math.sin(Math.toRadians(-gA4)))));
       ma4y4=((int) ((ma3y3+ (ma4x3-ma3x3) * Math.sin(Math.toRadians(-gA4))) + ((ma4y3-ma3y3)* Math.cos(Math.toRadians(-gA4)))));    
@@ -205,8 +199,8 @@ public class Modelo implements Runnable{
       
       dibujar();
        }
-       else if(e == ""){
-            gP=0;
+       else if(e.equals("ArtP")){
+            gP=g;
             dibujar();
        }
     }

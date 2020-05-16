@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import presentacion.Modelo;
 
 public class SistemaCliente implements Runnable{
 
@@ -13,16 +14,17 @@ public class SistemaCliente implements Runnable{
       private String host = "localhost";
       private int puerto = 5000;
       private Socket sock;
-
+      private Modelo modelo;
       private DataInputStream datosEntrada;
       private DataOutputStream datosSalida;
 
       private boolean lecturaActiva;
       private Thread hiloLectura;
 
-      public SistemaCliente() {
+      public SistemaCliente(Modelo modelo) {
             lecturaActiva = true;
             hiloLectura = new Thread(this);
+            this.modelo= modelo;
 
       }
 
@@ -68,13 +70,19 @@ public class SistemaCliente implements Runnable{
                               System.out.print("El servidor envía: ");
                               System.out.println(mensaje);
                               
+                              String msj[];
+                              msj= mensaje.split(",");
+                              
+                              
+                              
+                            modelo.ControlarSever(msj[0], Integer.parseInt(msj[1]));
                            
                              
 
                         } catch (IOException ex) {
                               System.out.println("error en la comunicación");
                         }
-                }
+                  }
            
                       
                   System.out.println("Finaliza hilo");

@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import presentacion.Modelo;
 
 
 public class Sistema {
@@ -12,10 +13,13 @@ public class Sistema {
     private Socket cliente;
     private int puerto;
     private boolean conectarActivo;
+    
+    private Modelo modelo;
     MensajesGrados mensajes = new MensajesGrados();  
-    public Sistema() {
+    public Sistema(Modelo modelo) {
         puerto = 5000;
         conectarActivo = true;
+        this.modelo = modelo;
     }       
     
     public void conectar() throws IOException {
@@ -27,7 +31,7 @@ public class Sistema {
             //Esperar a que alguien se conecte        
             cliente = server.accept();                    
             // Alguien se conectó
-            new ClienteHilo(cliente,mensajes).start();
+            new ClienteHilo(cliente,mensajes,modelo).start();
         }
         
     }

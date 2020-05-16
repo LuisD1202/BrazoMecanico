@@ -20,15 +20,16 @@ public class ClienteHilo extends Thread implements Observer{
     private MensajesGrados mensajes;
     public static int NUM_CLIENTES = 0;
     private int clienteNo;
-    
+    private Modelo modelo;
     private Brazo miBrazo;
 
    
-    public ClienteHilo(Socket c,MensajesGrados mensajes) {
+    public ClienteHilo(Socket c,MensajesGrados mensajes,Modelo modelo) {
         host = c;
         NUM_CLIENTES++;
         clienteNo = NUM_CLIENTES;
         this.mensajes = mensajes;
+        this.modelo = modelo;
         try {
             datosEntrada = new DataInputStream(host.getInputStream());
             datosSalida = new DataOutputStream(host.getOutputStream());
@@ -47,20 +48,27 @@ public class ClienteHilo extends Thread implements Observer{
     public void run() {
         String mensajeRecibido;
           boolean conectado = true;
-        String mensaje = "Hola "+ clienteNo + "!";
-        
+        //String mensaje = "Hola "+ clienteNo + "!";
+           System.out.println("Cleinte Conectado: "+host.getRemoteSocketAddress());
         mensajes.addObserver(this);
         
         while (conectado) {
             try {
                 // Lee un mensaje enviado por el cliente
+                    
                 mensajeRecibido = datosEntrada.readUTF();
              
-                mensajes.setMensaje(mensajeRecibido);
+                mensajes.setMensaje(mensajeRecibido,host.getRemoteSocketAddress().toString());
+               
                 System.out.println("Cliente"+clienteNo+": "+mensajeRecibido);
               
+                String msj[]; 
+                        msj= mensajeRecibido.split(",");
+                        
+                        modelo.controlar(msj[0],Integer.parseInt(msj[1]) );
                 
                 
+
             } catch (IOException ex) {
              
                 conectado = false; 
@@ -79,8 +87,20 @@ public class ClienteHilo extends Thread implements Observer{
     @Override
     public void update(Observable o, Object o1) {
          try {
-   
-            datosSalida.writeUTF(o1.toString());
+      
+       String[] msjClient= o1.toString().split("&");
+          
+      if(msjClient[1] == null ? host.getRemoteSocketAddress().toString() != null : !msjClient[1].equals(host.getRemoteSocketAddress().toString())) {
+      
+        datosSalida.writeUTF(msjClient[0]);
+      
+      }
+           
+             
+           
+      
+        
+          
         } catch (IOException ex) {
            
         }
